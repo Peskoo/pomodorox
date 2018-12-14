@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*
 
-import redis
+#import redis
 
 import sys
 import time
@@ -10,6 +10,14 @@ class Pomodoro:
 	def __init__(self):
 		self.timer = 25
 		
+        def choices(self, choices):
+            print('----------------------')
+            print('[1] Démarrer le timer')
+            print('[2] Régler le timer')
+            print('[3] Quitter')
+            choices = int(raw_input("Tapez 1, 2 ou 3 > "))
+            return choices
+
 	def start_timer(self):
 		mins = 0
 		while mins != self.timer:
@@ -40,12 +48,8 @@ try:
 	pomodoro = Pomodoro()
 	choices = 0
 	while choices != 3:
-		print('----------------------')
-		print('[1] Démarrer le timer')
-		print('[2] Régler le timer')
-		print('[3] Quitter')
-		choices = int(raw_input("Tapez 1, 2 ou 3 > "))
-		if choices == 1:
+		choices = pomodoro.choices(choices)
+		if choices  == 1:
 			pomodoro.start_timer()
 		elif choices == 2:
 			pomodoro.set_timer()
