@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*
 
-import time
-import sys
+import redis
 
+import sys
+import time
 
 
 class Pomodoro:
@@ -18,7 +19,6 @@ class Pomodoro:
 		print('........ {} ........'.format(mins))
 		print('Finito !')
 
-
 	def set_timer(self):
 		print('----------------------')
 		print('Timer actuel : {} minutes'.format(self.timer))
@@ -28,6 +28,13 @@ class Pomodoro:
 		elif timer_choices == 2:
 			pass	
 
+def connect():
+	conn = redis.Redis()
+	user = {'name': name,
+		'password': password,
+		'level': 0,}
+	conn.hmset('pythonDict', user)
+	conn.hgetall('pythonDict')
 
 try:
 	pomodoro = Pomodoro()
