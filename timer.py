@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*
 
-#import redis
+import redis
 
 import sys
 import time
